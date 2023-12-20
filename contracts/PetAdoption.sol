@@ -1,6 +1,5 @@
 //SPDX-License-Identifier: UNLICENSE
 pragma solidity ^0.8.19;
-import "hardhat/console.log";
 
 contract PetAdoption {
     address public owner;
@@ -27,8 +26,6 @@ contract PetAdoption {
             "Pet is already adopted"
         );
 
-        console.log("Adopting Pet: " + adoptIdx);
-
         petIdxToOwnerAddress[adoptIdx] = msg.sender;
         OwnerAddressToPetList[msg.sender].push(adoptIdx);
         allAdoptedPets.push(adoptIdx);
@@ -36,5 +33,13 @@ contract PetAdoption {
 
     function getOwner() public view returns (address) {
         return owner;
+    }
+
+    function getAllAdoptedPetsByOwner() public view returns (uint[] memory) {
+        return OwnerAddressToPetList[msg.sender];
+    }
+
+    function getAllAdoptedPets() public view returns (uint[] memory) {
+        return allAdoptedPets;
     }
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
+import "@mui/material";
 import Dapp from "./Dapp";
 import reportWebVitals from "./reportWebVitals";
 
